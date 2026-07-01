@@ -44,7 +44,7 @@
 #define CYPHER_TFT_HEIGHT  160
 
 /*===========================================================================
- *  SD CARD â€“ SDIO / SPI mode
+ *  SD CARD SDIO / SPI mode
  *  Connected via 35-40
  *===========================================================================*/
 #define CYPHER_SD_CMD   35
@@ -55,7 +55,7 @@
 #define CYPHER_SD_D3    40
 
 /*===========================================================================
- *  RGB LED â€“ Common Anode (CA to +3.3V)
+ *  RGB LED  Common Anode (CA to +3.3V)
  *  Cathode pins: Red=1, Green=2, Blue=3
  *  LOW = LED ON, HIGH = LED OFF (active-low)
  *===========================================================================*/
@@ -64,15 +64,15 @@
 #define CYPHER_LED_B    3
 
 /*===========================================================================
- *  RED STATUS LED (D1) â€“ active-low
+ *  RED STATUS LED (D1)  active-low
  *===========================================================================*/
 #define CYPHER_LED_RED  6
 
 /*===========================================================================
  *  BUTTONS
  *===========================================================================*/
-#define CYPHER_BTN_BOOT  0   // SW2 â€“ Boot button (pull-up, LOW = pressed)
-#define CYPHER_PIN_EN    45       // SW1 â€“ Reset (pulled high, LOW = reset)
+#define CYPHER_BTN_BOOT  0   // SW2  Boot button (pull-up, LOW = pressed)
+#define CYPHER_PIN_EN    45       // SW1  Reset (pulled high, LOW = reset)
 
 /*===========================================================================
  *  USB / UART
@@ -249,12 +249,12 @@ public:
     /**
      * @brief  Read the current date-time from the RTC.
      * @param  year    (out)  full year (e.g. 2026).
-     * @param  month   (out)  1â€“12.
-     * @param  day     (out)  1â€“31.
-     * @param  weekday (out)  0â€“6 (Sun=0).
-     * @param  hour    (out)  0â€“23.
-     * @param  minute  (out)  0â€“59.
-     * @param  second  (out)  0â€“59.
+     * @param  month   (out)  12.
+     * @param  day     (out)  31.
+     * @param  weekday (out)  6 (Sun=0).
+     * @param  hour    (out)  23.
+     * @param  minute  (out)  59.
+     * @param  second  (out)  59.
      * @return true if read succeeded.
      */
     bool readRTC(uint16_t &year, uint8_t &month, uint8_t &day,
