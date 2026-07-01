@@ -11,7 +11,7 @@
  * All results reported on Serial Monitor @ 115200 baud.
  * RGB LED:  BLUE = testing,  GREEN = all pass,  RED = fail.
  *
- * Hardware required: PCBCUPID Cypher V-2.0 + FAT32 MicroSD card
+ * Hardware required: PCBCUPID Cypher V-1.0 + FAT32 MicroSD card
  */
 
 #include <Wire.h>
