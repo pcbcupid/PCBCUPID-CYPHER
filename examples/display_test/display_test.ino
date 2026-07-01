@@ -10,7 +10,7 @@
  *
  * All test steps are reported on Serial Monitor @ 115200 baud.
  *
- * Hardware required: PCBCUPID Cypher V-2.0
+ * Hardware required: PCBCUPID Cypher V-1.0
  */
 
 #include <Wire.h>
