@@ -1,6 +1,6 @@
 # PCBCUPID Cypher Board-Support Library
 
-An Arduino-compatible board-support library for the **PCBCUPID Cypher** development board (CYPHER V-2.0), built around the **ESP32-S3-MINI-1**. Provides a simple, unified API for all onboard peripherals.
+An Arduino-compatible board-support library for the **PCBCUPID Cypher** development board (CYPHER V-1.0), built around the **ESP32-S3-MINI-1**. Provides a simple, unified API for all onboard peripherals.
 
 ---
 
@@ -58,7 +58,7 @@ Designed for ESP32 (tested on Cypher V-1.0), this library lets you focus on your
 | Status LED | GPIO | Red 0603 LED |
 
 **Compatible Platforms:**
-- ESP32-S3 
+- ESP32-S3 (all variants)
 
 ---
 
@@ -233,7 +233,6 @@ Included examples demonstrate:
 
 ## Documentation & Resources
 
-- **Cypher Board Schematic**: included in the repository (`xtra-cypher.kicad_sch`)
 - **ESP32-S3-MINI-1 Datasheet**: [Espressif](https://www.espressif.com/sites/default/files/documentation/esp32-s3-mini-1_mini-1u_datasheet_en.pdf)
 - **PCF8563 Datasheet**: [NXP](https://www.nxp.com/docs/en/data-sheet/PCF8563.pdf)
 - **ST7735 Datasheet**: [Sitronix](https://www.displayfuture.com/Display/datasheet/controller/ST7735.pdf)
