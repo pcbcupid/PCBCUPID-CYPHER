@@ -14,7 +14,7 @@
  * All results reported on Serial Monitor @ 115200 baud.
  * RGB LED:  BLUE = testing,  GREEN = all pass,  RED = fail.
  *
- * Hardware required: PCBCUPID Cypher V-2.0 + FAT32 MicroSD card + USB-C cable
+ * Hardware required: PCBCUPID Cypher V-1.0 + FAT32 MicroSD card + USB-C cable
  *
  * NOTE: In Arduino IDE, set "USB Mode" to "USB-OTG (TinyUSB)" —
  *       native USB CDC/JTAG conflicts with USB MSC.
