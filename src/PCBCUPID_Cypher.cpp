@@ -3,7 +3,7 @@
  * @brief Board-support implementation for the PCBCUPID Cypher (ESP32-S3-MINI-1).
  *
  * Pin mapping extracted from xtra-cypher.kicad_sch / xtra-cypher.kicad_pcb
- * (Cypher V-2.0, Espressif:ESP32-S3-MINI-1).
+ * (Cypher V-1.0, Espressif:ESP32-S3-MINI-1).
  *
  * Reference for ESP32-S3 Box style simplicity:
  *   https://github.com/SuGlider/Adafruit_ESP32S3_BOX
@@ -36,7 +36,7 @@
 #endif
 
 /*===========================================================================
- *  LOCAL CONSTANTS â€” PCF8563T register map
+ *  LOCAL CONSTANTS  PCF8563T register map
  *===========================================================================*/
 
 #define PCF8563_REG_CTRL1      0x00   // Control/status 1
@@ -82,7 +82,7 @@ PCBCUPID_Cypher::PCBCUPID_Cypher(TwoWire &wire)
 }
 
 /*===========================================================================
- *  begin()  â€“ full initialisation
+ *  begin()   full initialisation
  *===========================================================================*/
 
 bool PCBCUPID_Cypher::begin()
@@ -136,7 +136,7 @@ bool PCBCUPID_Cypher::begin()
 }
 
 /*===========================================================================
- *  beginLight()  â€“ lightweight initialisation (I2C + RTC only)
+ *  beginLight()   lightweight initialisation (I2C + RTC only)
  *===========================================================================*/
 
 bool PCBCUPID_Cypher::beginLight()
@@ -199,10 +199,10 @@ bool PCBCUPID_Cypher::isTFTReady() const
  *  RGB LED
  *
  *  The Cypher uses a common-anode RGB LED:
- *    - Anode â†’ +3.3 V
- *    - R / G / B cathodes â†’ GPIO1 / GPIO2 / GPIO3
- *  LOW  â†’ LED ON
- *  HIGH â†’ LED OFF
+ *    - Anode  +3.3 V
+ *    - R / G / B cathodes GPIO1 / GPIO2 / GPIO3
+ *  LOW  LED ON
+ *  HIGH  LED OFF
  *===========================================================================*/
 
 void PCBCUPID_Cypher::setRGBLed(CypherLedColor color)
@@ -258,8 +258,8 @@ void PCBCUPID_Cypher::setRGBLedRaw(uint8_t r, uint8_t g, uint8_t b)
 {
     /*
      * Invert values because the LED is common-anode (active-low).
-     * 0   â†’ full brightness (write 255 to the pin)
-     * 255 â†’ off             (write 0   to the pin)
+     * 0    full brightness (write 255 to the pin)
+     * 255  off             (write 0   to the pin)
      */
     analogWrite(CYPHER_LED_R, 255 - r);
     analogWrite(CYPHER_LED_G, 255 - g);
@@ -267,7 +267,7 @@ void PCBCUPID_Cypher::setRGBLedRaw(uint8_t r, uint8_t g, uint8_t b)
 }
 
 /*===========================================================================
- *  STATUS LED (D1, Red) â€“ active-low on GPIO6
+ *  STATUS LED (D1, Red)  active-low on GPIO6
  *===========================================================================*/
 
 void PCBCUPID_Cypher::setStatusLed(bool on)
@@ -294,12 +294,6 @@ bool PCBCUPID_Cypher::isBootPressed() const
  *
  *  The Cypher board does NOT include an onboard voltage divider.
  *  Add one externally:
- *
- *       BAT+ â”€â”€ R1 â”€â”€â”¬â”€â”€ GPIO45 (ADC1_CH0)
- *                     â”‚
- *                    R2
- *                     â”‚
- *                    GND
  *
  *  ratio = (R1 + R2) / R2
  *===========================================================================*/
@@ -384,7 +378,7 @@ void PCBCUPID_Cypher::reset()
 }
 
 /*===========================================================================
- *  RTC  â€“  PCF8563T  (I2C)
+ *  RTC    PCF8563T  (I2C)
  *
  *  Read / write date & time via the RTC.
  *  Data is stored as BCD in the chip; conversion is handled internally.
@@ -512,7 +506,7 @@ uint8_t PCBCUPID_Cypher::_dec2bcd(uint8_t dec)
 }
 
 /*===========================================================================
- *  SD CARD  â€“  MicroSD via SDIO (4-bit) or SPI fallback
+ *  SD CARD    MicroSD via SDIO (4-bit) or SPI fallback
  *
  *  SDIO pin mapping (from PCB silkscreen):
  *    CMD  = GPIO35    D0   = GPIO37    D2 = GPIO39
@@ -539,7 +533,7 @@ bool PCBCUPID_Cypher::beginSD()
 
     /*
      * SD_MMC.begin(mountpoint, mode1bit, format_if_mount_failed, freq, max_files)
-     *   mode1bit = false  â†’ 4-bit SDIO  (what we want)
+     *   mode1bit = false   4-bit SDIO  (what we want)
      */
     bool success = SD_MMC.begin("/sdcard", false, false, 40000);
     if (success)
@@ -571,10 +565,10 @@ bool PCBCUPID_Cypher::beginSD_SPI(uint8_t csPin)
 
     /*
      * SPI pin mapping for SD card:
-     *   SPI SCK  â†’ GPIO36 (CYPHER_SD_CLK)
-     *   SPI MISO â†’ GPIO37 (CYPHER_SD_D0)
-     *   SPI MOSI â†’ GPIO35 (CYPHER_SD_CMD)
-     *   SPI CS   â†’ GPIO40 (CYPHER_SD_D3)  [DAT3 = CS in SPI mode]
+     *   SPI SCK   GPIO36 (CYPHER_SD_CLK)
+     *   SPI MISO  GPIO37 (CYPHER_SD_D0)
+     *   SPI MOSI  GPIO35 (CYPHER_SD_CMD)
+     *   SPI CS    GPIO40 (CYPHER_SD_D3)  [DAT3 = CS in SPI mode]
      *
      * Note: calling SPI.begin() reconfigures the bus.
      * Call SPI.end() before switching back to TFT SPI.
@@ -614,7 +608,7 @@ bool PCBCUPID_Cypher::beginSD_SPI(uint8_t csPin)
 }
 
 /*===========================================================================
- *  TFT DISPLAY  â€“  ER-TFT0.96-4 (ST7735-compatible, 80Ã—160)
+ *  TFT DISPLAY    ER-TFT0.96-4 (ST7735-compatible, 80Ã—160)
  *
  *  Pin mapping:
  *    RST  = GPIO8     DC  = GPIO9     CS   = GPIO10
@@ -670,7 +664,7 @@ bool PCBCUPID_Cypher::beginTFT()
 }
 
 /*===========================================================================
- *  scanI2C()  â€“  utility to discover devices on the I2C bus
+ *  scanI2C()   utility to discover devices on the I2C bus
  *===========================================================================*/
 
 void PCBCUPID_Cypher::scanI2C()
